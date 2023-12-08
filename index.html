@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./img/todologo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <!-- Primary Meta Tags -->
+    <title>Meta Tags — Preview, Edit and Generate</title>
+    <meta name="title" content="Meta Tags — Preview, Edit and Generate" />
+    <meta
+      name="description"
+      content="Let's Try Todo App.Make fun and release stress."
+    />
+
+   
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://metatags.io/" />
+    <meta
+      property="og:title"
+      content="Meta Tags — Preview, Edit and Generate"
+    />
+    <meta
+      property="og:description"
+      content="Let's Try Todo App.Make fun and release stress."
+    />
+    <meta
+      property="og:image"
+      content="https://play-lh.googleusercontent.com/KNInXD9XRXJPXtWEGWvNf_MnT664xCO3yBr-KP9wmogIPplkyQcZLahhCmf3h1mtldmz"
+    />
+
+    
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://metatags.io/" />
+    <meta
+      property="twitter:title"
+      content="Meta Tags — Preview, Edit and Generate"
+    />
+    <meta
+      property="twitter:description"
+      content="Let's Try Todo App.Make fun and release stress."
+    />
+    <meta
+      property="twitter:image"
+      content="https://play-lh.googleusercontent.com/KNInXD9XRXJPXtWEGWvNf_MnT664xCO3yBr-KP9wmogIPplkyQcZLahhCmf3h1mtldmz"
+    />
+
+  
+  </head>
+  <body class="bg-gray-200">
+    <main
+      id="app"
+      class="font-asul mx-auto min-h-screen w-[500px] flex flex-col justify-center items-center"
+    >
+      <div class="w-[500px] h-[600px] mx-auto my-10 px-5 pb-10">
+        <h1 class="text-4xl font-bold text-zinc-700 mt-5">
+          Hello! <span id="heading"></span>
+        </h1>
+        <!-- Text Input  -->
+        <div class="flex items-center mt-5">
+          <input
+            id="textInput"
+            class="w-14 h-14 px-3 text-xl border flex-grow border-zinc-700 focus-visible:outline-none"
+            type="text"
+          />
+          <button
+            id="addBtn"
+            class="w-14 h-14 flex justify-center items-center text-white bg-zinc-700"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 stroke-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 4.5v15m7.5-7.5h-15"
+              />
+            </svg>
+          </button>
+        </div>
+        <!-- List Total Show -->
+        <div class="flex justify-between items-center">
+          <h3 class="text-2xl text-zinc-800 font-semibold py-5 font-serif">
+            My List
+          </h3>
+          <div class="bg-zinc-700 text-white border rounded-full px-3 py-2">
+            Done(<span class="doneCount">0</span> /
+            <span class="totalCount">0</span>)
+          </div>
+        </div>
+        <!-- Show Data  -->
+        <div id="listGroup">
+          <div
+            class="py-10 hidden flex-col last:flex justify-center items-center"
+          >
+            <img width="250px" src="./img/empty.svg" alt="empty" />
+            <p class="text-base font-semibold text-zinc-600">
+              There is no list to show !!...
+            </p>
+          </div>
+          <!-- <div class="flex justify-end items-end">
+         <button class="bg-zinc-300 hover:bg-zinc-500 text-slate-100 px-3 font-semibold text-xl py-2 rounded-full">Delete All</button>
+          </div> -->
+        </div>
+      </div>
+
+      <template id="listTemplate">
+        <div class="list">
+          <div
+            class="flex justify-between items-center overflow-hidden group animate__animated animate__fadeInDown border border-neutral-700 p-5 mb-3"
+          >
+            <div class="content flex items-center gap-3">
+              <input type="checkbox" class="list-check w-5 h-5" />
+              <div class="listText text-lg"></div>
+            </div>
+            <div
+              class="control group-hover:translate-x-0 translate-x-[150%] duration-500 flex text-neutral-800 gap-1"
+            >
+              <button
+                class="pointer-events-auto edit-btn disabled:opacity-30 active:scale-75 duration-300 border-2 p-1 border-neutral-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5 stroke-1 pointer-events-none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                  />
+                </svg>
+              </button>
+              <button
+                class="list-del pointer-events-auto active:scale-75 duration-300 border-2 p-1 border-neutral-700"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5 stroke-1 pointer-events-none"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+      <template id="editTemplate">
+        <div>
+          <input
+            type="text"
+            class="edit-input border border-neutral-700 p-1 px-2 focus-visible:outline-none"
+            name=""
+            id=""
+          />
+        </div>
+      </template>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
