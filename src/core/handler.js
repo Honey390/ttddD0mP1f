@@ -25,7 +25,11 @@ export const listGroupHandler = (event) => {
 
     confirmBox(() => {
       const list = event.target.closest(".list");
-      list.classList.add("animate__animated", "animate__fadeOutRight","duration-500");
+      list.classList.add(
+        "animate__animated",
+        "animate__fadeOutRight",
+        "duration-500"
+      );
       list.addEventListener("animationend", () => {
         list.remove();
         listCounter();
@@ -47,10 +51,10 @@ export const listGroupHandler = (event) => {
   } else if (event.target.classList.contains("list-check")) {
     const list = event.target.closest(".list");
     list.querySelector(".listText").classList.toggle("line-through");
-    listGroup.querySelector(".list-check").classList.add("accent-neutral-700");
-    listGroup
-      .querySelector(".list-check")
-      .classList.add("focus-visible:outline-none");
+    listGroup.querySelector(".list-check").toggleAttribute("checked");
+    listGroup.querySelector(".list-check").classList.add("focus:ring-0");
+    listGroup.querySelector(".list-check").classList.add("accent-gray-700");
+
     list.querySelector(".edit-btn").toggleAttribute("disabled");
     listCounter();
   }
